@@ -85,6 +85,7 @@ public class SimpleSequence {
             }
         } else{
             System.out.println("A number should be <= than B number!\n");
+            System.exit(0);
         }
     }
 }

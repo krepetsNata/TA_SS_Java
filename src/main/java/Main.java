@@ -1,100 +1,37 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int a=0,b=0, countOdd=0, countEven=0, size=0, biggestOdd=0, biggestEven=0;
-        //Scanner scanner = new Scanner (System.in);
+        int a=0, b=0, n=0;
 
-        System.out.println("Write two numbers a and b(a<=b)(interval): ");
-        System.out.println("write a number: ");
-        a = MyUtils.verifyIsNumber();//scanner, scanner.next());
-        System.out.println("write b number: ");
-        b = MyUtils.verifyIsNumber();//scanner, scanner.next());
+        //task 1 - user enters interval
+        System.out.println("Write two numbers a and b(a<=b)(interval):");
+        System.out.println("Input A number: ");
+        a = MyUtils.verifyIsNumber();
+        System.out.println("Input B number: ");
+        b = MyUtils.verifyIsNumber();
 
+        //task 2 - print sum of odd and even numbers
         SimpleSequence simpleSequence = new SimpleSequence(a, b);
-//        //list of simple sequence
-        System.out.println("summ of odd numbers: " + simpleSequence.getCountOdd());
-        System.out.println("summ of even numbers: " + simpleSequence.getCountEven());
+        System.out.println("\nSum of odd numbers: " + simpleSequence.getCountOdd());
+        System.out.println("Sum of even numbers: " + simpleSequence.getCountEven());
 
-//        List<Integer> listDig = new ArrayList<>();
-//        if (a < b){
-//            for(int i = a; i <=b; i++){
-//                listDig.add(i);
-//                if (i % 2 == 0) {
-//                    countEven += i;
-//                } else {
-//                    countOdd += i;
-//                }
-//            }
-//            System.out.println("summ of even numbers: " + countEven);
-//            System.out.println("summ of odd numbers: " + countOdd);
-//        } else{
-//            System.out.println("a number should be <= than b number!");
-//        }
+        //task 3.1 - biggest odd and even numbers (for f1 and f2 Fibonacci sequence)
+        System.out.print("\nList of simple sequence: ");
+        System.out.println(simpleSequence.getListSimpleSequence());
+        System.out.println("biggestOdd=" + simpleSequence.getBiggestOdd()); //f1
+        System.out.println("biggestEven=" + simpleSequence.getBiggestEven()); //f2
 
-//        // biggestOdd and biggestEven in simple sequence
-//        int sizetemp = listDig.size();
-//        if (listDig.get(sizetemp-1) % 2 == 0) {
-//            biggestOdd = listDig.get(sizetemp-2);
-//            biggestEven = listDig.get(sizetemp-1);
-//        } else {
-//            biggestOdd = listDig.get(sizetemp-1);
-//            biggestEven = listDig.get(sizetemp-2);
-//        }
-//        System.out.print("list of sequence: ");
-//        System.out.println(listDig);
-//        System.out.println("biggestOdd=" + biggestOdd);
-//        System.out.println("biggestEven=" + biggestEven);
-//
-//
-//
-//        //fibonacci sequence
-//        System.out.println("write size of fibonacci sequence: ");
-//        size = scanner.nextInt();
-//        List<Integer> listF = fibonacci(size, biggestOdd, biggestEven);
-//        System.out.println(listF);
-//
-//        //percentage odd and even numbers in fibonacci sequence
-//        System.out.println(printPercentageOddEvenNumbersInFibonacci(listF));
-    }
+        //task 3.2 - Fibonacci sequence
+        System.out.println("\nwrite size of fibonacci sequence: ");
+        n = MyUtils.verifyIsNumber();
+        FibonacciSequence fibonacciSequence = new FibonacciSequence(simpleSequence.getBiggestOdd(), simpleSequence.getBiggestEven(), n);
+        System.out.print("List of Fibonacci sequence: ");
+        System.out.println(fibonacciSequence.getListFibonacciSequence());
 
 
-
-    static List<Integer> fibonacci(int n, int f1, int f2)
-    {
-        List<Integer> listFib = new ArrayList<>();
-
-        if (n <= 1) {
-            listFib.add(n);
-        } else {
-            listFib.add(f1);
-            listFib.add(f2);
-            for(int i = 2; i <= n; i++) {
-                listFib.add(i, (listFib.get(i-1)+ listFib.get(i-2)));
-            }
-        }
-        return listFib;
-    }
-
-    static String printPercentageOddEvenNumbersInFibonacci(List<Integer> listFib){
-        String strPercentageOddEven = "";
-        int countEven=0, countOdd=0;
-
-        for(int i = 0; i < listFib.size(); i++) {
-            if (listFib.get(i) % 2 == 0) {
-                countEven++;
-            } else {
-                countOdd++;
-            }
-        }
-
-        int percentageOdd = ((countOdd * 100)/listFib.size());
-        int percentageEven = ((countEven * 100)/listFib.size());
-
-        strPercentageOddEven = "percentage odd = " + percentageOdd + "%\npercentage even = " + percentageEven + "%";
-
-        return strPercentageOddEven;
+        //task 4 - percentage odd and even numbers in Fibonacci sequence
+        System.out.println(fibonacciSequence.printPercentageOddEvenNumbersInFibonacci());
     }
 }

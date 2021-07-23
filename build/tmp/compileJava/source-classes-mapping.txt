@@ -1,8 +1,8 @@
-FibonacciSequence.java
- FibonacciSequence
-SimpleSequence.java
- SimpleSequence
-Main.java
- Main
 MyUtils.java
  MyUtils
+FibonacciSequence.java
+ FibonacciSequence
+Main.java
+ Main
+SimpleSequence.java
+ SimpleSequence

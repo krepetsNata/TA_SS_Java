@@ -2,11 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleSequence {
-    int a;
-    int b;
-    int countOdd;
-    int countEven;
-    List<Integer> listSimpleSequence;
+    private int a;
+    private int b;
+    private int countOdd;
+    private int countEven;
+    private int biggestOdd;
+    private int biggestEven;
+    private int sizeList;
+    private List<Integer> listSimpleSequence;
 
     public int getA() {
         return a;
@@ -25,56 +28,63 @@ public class SimpleSequence {
     }
 
     public int getCountOdd() {
+        for(int item : listSimpleSequence){
+            if (item % 2 != 0) {
+                countOdd += item;
+            }
+        }
         return countOdd;
     }
 
-    public void setCountOdd(int countOdd) {
-        this.countOdd = countOdd;
-    }
-
     public int getCountEven() {
+        for(int item : listSimpleSequence){
+            if (item % 2 == 0) {
+                countEven += item;
+            }
+        }
         return countEven;
-    }
-
-    public void setCountEven(int countEven) {
-        this.countEven = countEven;
     }
 
     public List<Integer> getListSimpleSequence() {
         return listSimpleSequence;
     }
 
-    public void setListSimpleSequence(List<Integer> listSimpleSequence) {
-        this.listSimpleSequence = listSimpleSequence;
+    public int getBiggestOdd() {
+        getSizeList();
+        if (listSimpleSequence.get(sizeList-1) % 2 == 0) {
+            biggestOdd = listSimpleSequence.get(sizeList-2);
+        } else {
+            biggestOdd = listSimpleSequence.get(sizeList-1);
+        }
+        return biggestOdd;
+    }
+
+    public int getBiggestEven() {
+        getSizeList();
+        if (listSimpleSequence.get(sizeList-1) % 2 == 0) {
+            biggestEven = listSimpleSequence.get(sizeList-1);
+        } else {
+            biggestEven = listSimpleSequence.get(sizeList-2);
+        }
+        return biggestEven;
+    }
+
+    public int getSizeList() {
+        sizeList = listSimpleSequence.size();
+        return sizeList;
     }
 
     public SimpleSequence(int a, int b) {
+        this.a = a;
+        this.b = b;
+        listSimpleSequence = new ArrayList<>();
+
         if (a < b){
-            this.a = a;
-            this.b = b;
             for(int i = a; i <=b; i++){
                 listSimpleSequence.add(i);
             }
         } else{
-            System.out.println("a number should be <= than b number!");
-        }
-    }
-
-    public void method(){
-        //list of simple sequence
-        //List<Integer> listDig = new ArrayList<>();
-        if (a < b){
-            for(int i = a; i <=b; i++){
-                listSimpleSequence.add(i);
-                if (i % 2 == 0) {
-                    countEven += i;
-                } else {
-                    countOdd += i;
-                }
-            }
-
-        } else{
-            System.out.println("a number should be <= than b number!");
+            System.out.println("A number should be <= than B number!\n");
         }
     }
 }

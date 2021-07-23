@@ -1,4 +1,4 @@
-package HW_2.task_2;
+package HW_2;
 
 public interface Vehicle {
     String getBrand();

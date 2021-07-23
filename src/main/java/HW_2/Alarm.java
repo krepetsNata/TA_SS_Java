@@ -1,4 +1,4 @@
-package HW_2.task_2;
+package HW_2;
 
 public interface Alarm {
     default String turnAlarmOn(){ return "alarm is on";}

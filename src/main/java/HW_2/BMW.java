@@ -1,4 +1,4 @@
-package HW_2.task_2;
+package HW_2;
 
 public class BMW extends Car{
     String brand;

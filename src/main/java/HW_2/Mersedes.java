@@ -1,22 +1,26 @@
 package HW_2;
 
-public class Mersedes extends Car{
-    String brand;
-    String model;
+public class Mersedes extends Car {
 
-    public String getBrand() {
-        return brand;
+    public Mersedes() {
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public Mersedes(String brand, String model, int speed) {
+        super(brand, model, speed);
+        this.speed = speed;
     }
 
-    public String getModel() {
-        return model;
+    @Override
+    void setBrand(String brand) {
+        super.brand = "Mercedes";
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    @Override
+    public String toString() {
+        return "\nMersedes{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", speed=" + speed +
+                "}";
     }
 }

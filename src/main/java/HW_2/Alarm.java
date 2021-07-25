@@ -1,7 +1,11 @@
 package HW_2;
 
 public interface Alarm {
-    default String turnAlarmOn(){ return "alarm is on";}
+    default String turnAlarmOn(String brand) {
+        return "alarm is on on " + brand;
+    }
 
-    default String turnAlarmOff(){ return "alarm is off";}
+    default String turnAlarmOff(String brand) {
+        return "alarm is off on " + brand;
+    }
 }

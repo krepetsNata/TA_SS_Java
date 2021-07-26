@@ -7,7 +7,7 @@ public abstract class Car extends ActionsOnCars implements Alarm, Vehicle {
     int speed;
 
     public Car() {
-        System.out.println("Empty car was created! Please, configure it.");
+        System.out.println("\nEmpty car was created! Please, configure it: ");
     }
 
     public Car(String brand, String model, int speed) {
@@ -16,12 +16,11 @@ public abstract class Car extends ActionsOnCars implements Alarm, Vehicle {
         this.speed = speed;
     }
 
-    @Override
     public String getBrand() {
         return brand;
     }
 
-    abstract void setBrand(String brand);
+    abstract void setBrand();
 
     public String getModel() {
         return model;

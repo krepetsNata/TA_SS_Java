@@ -1,9 +1,6 @@
 package HW_2;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ActionsOnCars {
@@ -16,22 +13,30 @@ public class ActionsOnCars {
         return car;
     }
 
-    public void removeCar(Car car) {
+    public void removeCar(Car car) { //remove by brand name
         listCars.removeIf(t -> t.brand == car.brand);
     }
 
     public void showCars() {
-        listCars
-                .stream()
-                .forEach(System.out::println);
+        if (!listCars.isEmpty()) {
+            listCars
+                    .stream()
+                    .forEach(System.out::println);
+        } else {
+            System.out.print("list is empty!\n");
+        }
     }
 
-    public void sortCars() {
-        listCars
-                .stream()
-                .sorted(Comparator.comparing(Car::getBrand))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+    public void sortCars() { //sort by brand name
+        if (!listCars.isEmpty()) {
+            listCars
+                    .stream()
+                    .sorted(Comparator.comparing(Car::getBrand))
+                    .collect(Collectors.toList())
+                    .forEach(System.out::println);
+        } else {
+            System.out.print("list is empty!\n");
+        }
     }
 
     public static String inputWord() {
@@ -44,5 +49,30 @@ public class ActionsOnCars {
             str = inputWord();
         }
         return str;
+    }
+
+    public void printCarActions(EnumCarMenu enumCarMenu, Car car) {
+
+        switch (enumCarMenu.getNumOfOperation()) {
+            case 1:
+                addCar(car);
+                System.out.println("\nCar was added.");
+                break;
+            case 2:
+                removeCar(car);
+                System.out.println("\nCar was removed (by name of brand).");
+                break;
+            case 3:
+                System.out.println("\nList of all cars:");
+                showCars();
+                break;
+            case 4:
+                System.out.println("\nSorted list of cars by brand:");
+                sortCars();
+                break;
+            default:
+                System.out.println("\nWrong operation!");
+                break;
+        }
     }
 }

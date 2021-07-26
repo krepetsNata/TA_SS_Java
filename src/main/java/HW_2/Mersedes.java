@@ -11,13 +11,13 @@ public class Mersedes extends Car {
     }
 
     @Override
-    void setBrand(String brand) {
+    void setBrand() {
         super.brand = "Mercedes";
     }
 
     @Override
     public String toString() {
-        return "\nMersedes{" +
+        return "Mersedes{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", speed=" + speed +

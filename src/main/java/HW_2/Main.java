@@ -14,46 +14,49 @@ public class Main {
         while (opt != 5) {
             System.out.println("--------------------------------------------------------------------");
             System.out.println(Arrays.toString(EnumCarMenu.values()));
-            System.out.println("Input num of operation, which you want execute (from 1 to 4) or 5 for exit: ");
+            System.out.println("\nInput num of operation, which you want execute (from 1 to 4) or 5 for exit: ");
             opt = MyUtils.verifyIsNumber();
 
             if (opt == 1 || opt == 2) {
-                System.out.println("What brand do you want to work - BMW or Mercedes, please input brand word: ");
-                brandWord = ActionsOnCars.inputWord();
 
-                switch (brandWord) {
-                    case "Mercedes":
-                    case "mercedes":
-                        car = new Mersedes();
-                        break;
-                    case "BMW":
-                    case "bmw":
-                        car = new BMW();
-                        break;
-                    default:
-                        System.out.println("Wrong brand! Try again! \nInput name of brand: ");
+                boolean flagIsValidBrand = true;
+
+                while (flagIsValidBrand) {
+
+                    System.out.println("What brand do you want to work - BMW or Mercedes, please input brand word: ");
+                    brandWord = ActionsOnCars.inputWord();
+
+                    flagIsValidBrand = false;
+
+                    switch (brandWord) {
+                        case "Mercedes":
+                        case "mercedes":
+                            car = new Mersedes();
+                            break;
+                        case "BMW":
+                        case "bmw":
+                            car = new BMW();
+                            break;
+                        default:
+                            flagIsValidBrand = true;
+                            System.out.println("\nWrong brand! Try again!");
+                    }
                 }
-                System.out.println("Input model and speed: ");
+                System.out.println("Input model(string) and speed(integer): ");
                 modelWord = ActionsOnCars.inputWord();
                 speed = MyUtils.verifyIsNumber();
 
-                car.setBrand(brandWord);
+                car.setBrand();
                 car.setModel(modelWord);
                 car.setSpeed(speed);
 
-
-                //-----add test data
-//                    actions.addCar(car);
-//                    actions.addCar(car);
-//                    actions.addCar(car);
-                //------
-                EnumCarMenu.printCarActions(actions, opt, car);
+                actions.printCarActions(EnumCarMenu.setNumOfOperation(opt), car);
             } else if (opt == 3 || opt == 4) {
-                EnumCarMenu.printCarActions(actions, opt, car);
+                actions.printCarActions(EnumCarMenu.setNumOfOperation(opt), car);
             } else {
-                System.out.println("Wrong nomber of operation");
+                System.out.println("Wrong number of operation! Try again.");
             }
         }
-        System.out.println("program is closed!");
+        System.out.println("Program is closed!");
     }
 }

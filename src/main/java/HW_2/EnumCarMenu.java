@@ -23,28 +23,18 @@ enum EnumCarMenu {
         return numOfOperation;
     }
 
-    public static void printCarActions(ActionsOnCars actionsOnCars, int enumCarMenu, Car car) {
-
-        switch (enumCarMenu) {
+    public static EnumCarMenu setNumOfOperation(int value) {
+        switch (value) {
             case 1:
-                actionsOnCars.addCar(car);
-                System.out.println("Car was added");
-                break;
+                return EnumCarMenu.ADD_CAR;
             case 2:
-                actionsOnCars.removeCar(car);
-                System.out.println("Car was removed");
-                break;
+                return EnumCarMenu.REMOVE_CAR;
             case 3:
-                actionsOnCars.showCars();
-                System.out.println("List of all cars");
-                break;
+                return EnumCarMenu.SHOW_CARS;
             case 4:
-                actionsOnCars.sortCars();
-                System.out.println("Sorted list of cars");
-                break;
+                return EnumCarMenu.SORT_CARS;
             default:
-                System.out.println("Wrong operation");
-                break;
+                return null;
         }
     }
 

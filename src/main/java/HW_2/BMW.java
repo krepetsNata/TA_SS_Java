@@ -11,7 +11,7 @@ public class BMW extends Car {
     }
 
     @Override
-    void setBrand(String brand) {
+    void setBrand() {
         super.brand = "BMW";
     }
 

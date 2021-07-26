@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class ActionsOnCars {
 
-    Car car;
-    List<Car> listCars = new ArrayList<>();
+    private Car car;
+    private List<Car> listCars = new ArrayList<>();
 
     public Car addCar(Car car) {
         listCars.add(car);

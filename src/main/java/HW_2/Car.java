@@ -2,9 +2,9 @@ package HW_2;
 
 public abstract class Car extends ActionsOnCars implements Alarm, Vehicle {
 
-    String brand;
-    String model;
-    int speed;
+    protected String brand;
+    protected String model;
+    protected int speed;
 
     public Car() {
         System.out.println("\nEmpty car was created! Please, configure it: ");
